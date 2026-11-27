@@ -7,7 +7,7 @@ const API_BASE = "https://www.bankofcanada.ca/valet/observations";
 const DEFAULT_RANGE_DAYS = 30;
 const DEFAULT_CURRENCY = "USD";
 
-// G7 currencies (other than CAD itself) plus the Chinese yuan.
+// G7 currencies (other than CAD itself) plus the Chinese yuan and Hong Kong dollar.
 // The Bank of Canada publishes 24 currencies in total; to add another,
 // add its code here (the series name is always FX<code>CAD).
 const CURRENCIES = {
@@ -16,6 +16,7 @@ const CURRENCIES = {
   GBP: "UK pound sterling",
   JPY: "Japanese yen",
   CNY: "Chinese yuan (renminbi)",
+  HKD: "Hong Kong dollar",
 };
 
 const form = document.getElementById("range-form");
