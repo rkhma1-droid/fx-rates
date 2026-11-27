@@ -1,0 +1,178 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #f4f6f9;
+  color: #1f2933;
+  margin: 0;
+  padding: 40px 16px;
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin: 0;
+}
+
+.subtitle {
+  margin: 4px 0 20px;
+  color: #616e7c;
+}
+
+/* Date pickers and the Get rates button, side by side */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: #3e4c59;
+}
+
+input[type="date"],
+select {
+  padding: 8px;
+  font-size: 15px;
+  border: 1px solid #cbd2d9;
+  border-radius: 6px;
+}
+
+button {
+  padding: 9px 14px;
+  font-size: 15px;
+  border: 1px solid #c8102e;
+  border-radius: 6px;
+  background: #c8102e; /* Canadian red */
+  color: white;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: white;
+  color: #c8102e;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Small pill buttons for 1 week / 30 days / 3 months / 1 year */
+.quick-ranges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #616e7c;
+}
+
+.quick-ranges button {
+  padding: 4px 12px;
+  font-size: 13px;
+  border-radius: 999px;
+  border-color: #cbd2d9;
+  background: white;
+  color: #3e4c59;
+}
+
+/* The range currently shown */
+.quick-ranges button.active {
+  border-color: #c8102e;
+  background: #c8102e;
+  color: white;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+#status {
+  min-height: 1.2em;
+  color: #616e7c;
+}
+
+#status.error {
+  color: #c8102e;
+}
+
+/* Latest / average / high / low boxes */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.summary div {
+  background: #f4f6f9;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.summary span {
+  display: block;
+  font-size: 12px;
+  color: #616e7c;
+}
+
+.summary strong {
+  font-size: 18px;
+}
+
+/* The chart needs a fixed height; its width follows the page */
+.chart-wrap {
+  position: relative;
+  height: 260px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #e4e7eb;
+}
+
+th:last-child,
+td:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.source {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #616e7c;
+}
+
+/* Phones: stack the summary boxes two per row */
+@media (max-width: 520px) {
+  .summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

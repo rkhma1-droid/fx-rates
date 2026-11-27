@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAD Exchange Rates</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1 id="title">USD → CAD exchange rates</h1>
+    <p class="subtitle">Daily average rates from the Bank of Canada</p>
+
+    <form id="range-form">
+      <label>
+        Currency
+        <select id="currency"></select>
+      </label>
+      <label>
+        Start date
+        <input id="start-date" type="date" min="2017-01-03" required>
+      </label>
+      <label>
+        End date
+        <input id="end-date" type="date" min="2017-01-03" required>
+      </label>
+      <button type="submit">Get rates</button>
+    </form>
+
+    <!-- Quick ranges: each one ends on the last working day -->
+    <div class="quick-ranges" id="quick-ranges">
+      <span>Quick range:</span>
+      <button type="button" data-days="7">1 week</button>
+      <button type="button" data-days="30">30 days</button>
+      <button type="button" data-days="90">3 months</button>
+      <button type="button" data-days="365">1 year</button>
+    </div>
+
+    <div class="toolbar">
+      <button id="refresh-btn" type="button" class="secondary" title="Fetch the latest published rates from the Bank of Canada">↻ Refresh</button>
+      <button id="inverse-btn" type="button" class="secondary">Show inverse (CAD → USD)</button>
+      <span class="spacer"></span>
+      <button id="csv-btn" type="button" class="secondary">Download CSV</button>
+      <button id="excel-btn" type="button" class="secondary">Download Excel</button>
+    </div>
+
+    <p id="status" role="status"></p>
+
+    <div id="summary" class="summary"></div>
+
+    <!-- Line chart of the rates (drawn by Chart.js) -->
+    <div class="chart-wrap">
+      <canvas id="rate-chart" role="img" aria-label="Line chart of the exchange rate over the selected dates"></canvas>
+    </div>
+
+    <table id="rates-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th id="rate-header">1 USD in CAD</th>
+        </tr>
+      </thead>
+      <tbody id="rates-body"></tbody>
+    </table>
+
+    <p class="source">
+      Source: <a href="https://www.bankofcanada.ca/valet/docs" target="_blank" rel="noopener">Bank of Canada Valet API</a>
+      (series <span id="series-name">FXUSDCAD</span>). Rates are published on Bank of Canada business days only.
+    </p>
+  </main>
+
+  <!-- SheetJS: builds the .xlsx file for the Excel download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <!-- Chart.js: draws the line chart -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="holidays.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

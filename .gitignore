@@ -1,0 +1,8 @@
+# Files Git should never save (Windows/macOS system junk)
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Downloaded rate files, if you save them into this folder
+*.csv
+*.xlsx
