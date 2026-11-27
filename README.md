@@ -26,7 +26,10 @@ Files that make this work: `manifest.webmanifest` (name, icon, colours), `sw.js`
 - **Default dates:** the last 30 days, ending yesterday. If yesterday was a weekend or a Canadian federal public holiday, the end date moves back to the most recent working day.
 - **Currency picker:** USD, EUR, GBP, JPY, CNY or HKD. Changing it reloads the rates, and the page remembers your choice next time.
 - **Quick ranges:** 1 week, 30 days, 3 months or 1 year, each ending on the last working day. Data starts on 2017-01-03.
-- **Line chart:** the rate over the selected dates. Hover to see each day's value.
+- **Line chart:** the rate over the selected dates. Hover or drag to see each day's value.
+- **Compare with:** pick a second currency to draw both on one chart as **% change since the first day** (their rates are on very different scales). The table and downloads get extra columns for it.
+- **Change since the previous day:** under the latest rate, e.g. ▲ +0.0024 (+0.17%) vs Nov 25.
+- **Dark mode:** follows the phone's or computer's light/dark setting automatically.
 - **Refresh button:** fetches the latest published rates again and shows the time of the update. The Bank of Canada publishes one daily average per business day (around 4:30 p.m. ET), so these are not live market prices.
 - **Inverse button:** switches between e.g. USD → CAD and CAD → USD.
 - **Downloads:** CSV or Excel (.xlsx). Both files include both directions.

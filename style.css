@@ -1,7 +1,59 @@
+/* ---------- Colours ----------
+   Every colour is a named "token". Light values first; the dark-mode block
+   below swaps them when the phone or computer is set to dark mode.
+   The chart reads --series-1 / --series-2 / --chart-* from here too (app.js). */
+:root {
+  color-scheme: light;
+  --page: #f4f6f9;          /* page background */
+  --surface: #ffffff;       /* the card */
+  --surface-soft: #f4f6f9;  /* summary boxes */
+  --text: #1f2933;
+  --text-2: #3e4c59;
+  --muted: #616e7c;
+  --border: #cbd2d9;
+  --rule: #e4e7eb;          /* table lines */
+  --accent: #c8102e;        /* Canadian red: filled buttons */
+  --on-accent: #ffffff;     /* text on filled buttons */
+  --accent-ink: #c8102e;    /* red text/borders on the card */
+  --up: #1a7f37;            /* ▲ rate went up */
+  --down: #b42318;          /* ▼ rate went down */
+  --series-1: #c8102e;      /* chart line 1 (validated palette) */
+  --series-2: #1f6fd1;      /* chart line 2 */
+  --chart-grid: #eef1f4;
+  --chart-crosshair: #9aa5b1;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;     /* dark date pickers, dropdowns and scrollbars too */
+    --page: #111418;
+    --surface: #1b1f24;
+    --surface-soft: #242a31;
+    --text: #e6e9ed;
+    --text-2: #c3cad3;
+    --muted: #9aa5b1;
+    --border: #3a424c;
+    --rule: #2a3038;
+    --accent: #c8102e;
+    --on-accent: #ffffff;
+    --accent-ink: #ff7a85;  /* lighter red, readable on the dark card */
+    --up: #3fb950;
+    --down: #ff7b72;
+    --series-1: #e5484d;
+    --series-2: #4c8eea;
+    --chart-grid: #2a3038;
+    --chart-crosshair: #5f6b78;
+    --shadow: none;
+  }
+}
+
+/* ---------- Layout ---------- */
+
 body {
   font-family: system-ui, sans-serif;
-  background: #f4f6f9;
-  color: #1f2933;
+  background: var(--page);
+  color: var(--text);
   margin: 0;
   padding: 40px 16px;
 }
@@ -9,10 +61,10 @@ body {
 main {
   max-width: 640px;
   margin: 0 auto;
-  background: white;
+  background: var(--surface);
   padding: 24px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow);
 }
 
 h1 {
@@ -21,10 +73,10 @@ h1 {
 
 .subtitle {
   margin: 4px 0 20px;
-  color: #616e7c;
+  color: var(--muted);
 }
 
-/* Date pickers and the Get rates button, side by side */
+/* Currency, compare, dates and the Get rates button, side by side */
 form {
   display: flex;
   flex-wrap: wrap;
@@ -37,30 +89,33 @@ label {
   flex-direction: column;
   gap: 4px;
   font-size: 14px;
-  color: #3e4c59;
+  color: var(--text-2);
 }
 
 input[type="date"],
 select {
   padding: 8px;
   font-size: 15px;
-  border: 1px solid #cbd2d9;
+  border: 1px solid var(--border);
   border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
 }
 
 button {
   padding: 9px 14px;
   font-size: 15px;
-  border: 1px solid #c8102e;
+  border: 1px solid var(--accent);
   border-radius: 6px;
-  background: #c8102e; /* Canadian red */
-  color: white;
+  background: var(--accent);
+  color: var(--on-accent);
   cursor: pointer;
 }
 
 button.secondary {
-  background: white;
-  color: #c8102e;
+  background: var(--surface);
+  border-color: var(--accent-ink);
+  color: var(--accent-ink);
 }
 
 button:disabled {
@@ -76,23 +131,23 @@ button:disabled {
   gap: 6px;
   margin-top: 12px;
   font-size: 14px;
-  color: #616e7c;
+  color: var(--muted);
 }
 
 .quick-ranges button {
   padding: 4px 12px;
   font-size: 13px;
   border-radius: 999px;
-  border-color: #cbd2d9;
-  background: white;
-  color: #3e4c59;
+  border-color: var(--border);
+  background: var(--surface);
+  color: var(--text-2);
 }
 
 /* The range currently shown */
 .quick-ranges button.active {
-  border-color: #c8102e;
-  background: #c8102e;
-  color: white;
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .toolbar {
@@ -108,11 +163,11 @@ button:disabled {
 
 #status {
   min-height: 1.2em;
-  color: #616e7c;
+  color: var(--muted);
 }
 
 #status.error {
-  color: #c8102e;
+  color: var(--accent-ink);
 }
 
 /* Latest / average / high / low boxes */
@@ -123,8 +178,9 @@ button:disabled {
   margin-bottom: 16px;
 }
 
-.summary div {
-  background: #f4f6f9;
+/* ">" = only the four boxes themselves, not the change line inside a box */
+.summary > div {
+  background: var(--surface-soft);
   border-radius: 8px;
   padding: 10px;
 }
@@ -132,11 +188,26 @@ button:disabled {
 .summary span {
   display: block;
   font-size: 12px;
-  color: #616e7c;
+  color: var(--muted);
 }
 
 .summary strong {
   font-size: 18px;
+}
+
+/* "▲ +0.0042 (+0.30%) vs Nov 25" under the latest rate */
+.summary .change {
+  margin-top: 2px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary .change.up {
+  color: var(--up);
+}
+
+.summary .change.down {
+  color: var(--down);
 }
 
 /* The chart needs a fixed height; its width follows the page */
@@ -155,11 +226,17 @@ th,
 td {
   text-align: left;
   padding: 8px;
-  border-bottom: 1px solid #e4e7eb;
+  border-bottom: 1px solid var(--rule);
 }
 
-th:last-child,
-td:last-child {
+/* Dates never break across two lines */
+td:first-child {
+  white-space: nowrap;
+}
+
+/* Number columns line up on the right */
+th.num,
+td.num {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
@@ -167,12 +244,29 @@ td:last-child {
 .source {
   margin-top: 20px;
   font-size: 13px;
-  color: #616e7c;
+  color: var(--muted);
 }
 
-/* Phones: stack the summary boxes two per row */
+.source a {
+  color: var(--accent-ink);
+}
+
+/* Phones: stack the summary boxes two per row, and use the width better */
 @media (max-width: 520px) {
+  body {
+    padding: 16px 12px;
+  }
+
+  main {
+    padding: 16px;
+  }
+
   .summary {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  th,
+  td {
+    padding: 8px 6px;
   }
 }

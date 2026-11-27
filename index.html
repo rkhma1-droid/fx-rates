@@ -9,11 +9,13 @@
     change this tag (all three places) so phones and browsers download the new
     files instead of reusing a remembered copy.
   -->
-  <link rel="stylesheet" href="style.css?v=2026-11-27.2">
+  <link rel="stylesheet" href="style.css?v=2026-11-27.3">
 
   <!-- Makes the site installable as an app (Android: Chrome → Install app) -->
   <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#c8102e">
+  <!-- Colour of the phone's status bar: red in light mode, dark grey in dark mode -->
+  <meta name="theme-color" content="#c8102e" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1b1f24" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
   <link rel="icon" href="icons/icon-192.png" type="image/png" sizes="192x192">
 </head>
@@ -26,6 +28,10 @@
       <label>
         Currency
         <select id="currency"></select>
+      </label>
+      <label>
+        Compare with
+        <select id="compare"></select>
       </label>
       <label>
         Start date
@@ -68,7 +74,8 @@
       <thead>
         <tr>
           <th>Date</th>
-          <th id="rate-header">1 USD in CAD</th>
+          <th id="rate-header" class="num">1 USD in CAD</th>
+          <th id="compare-header" class="num" hidden></th>
         </tr>
       </thead>
       <tbody id="rates-body"></tbody>
@@ -95,7 +102,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"
     integrity="sha512-CQBWl4fJHWbryGE+Pc7UAxWMUMNMWzWxF4SQo9CgkJIN1kx6djDQZjh3Y8SZ1d+6I+1zze6Z7kHXO7q3UyZAWw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="holidays.js?v=2026-11-27.2"></script>
-  <script src="app.js?v=2026-11-27.2"></script>
+  <script src="holidays.js?v=2026-11-27.3"></script>
+  <script src="app.js?v=2026-11-27.3"></script>
 </body>
 </html>
