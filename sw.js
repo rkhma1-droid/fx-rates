@@ -6,7 +6,8 @@
 // GitHub Pages (and the saved copy is refreshed). Offline, the saved copy is used.
 // Bank of Canada requests are NOT touched: they always go straight to the Bank.
 
-const CACHE_NAME = "fx-rates-v1";
+// Changing this name makes every installed app throw away its old saved copy
+const CACHE_NAME = "fx-rates-v2";
 
 const APP_FILES = [
   "./",
@@ -21,9 +22,11 @@ const APP_FILES = [
   "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js",
 ];
 
-// Installed: save the app files
+// Installed: save the app files.
+// cache: "reload" = download fresh copies, not ones the browser kept from before.
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_FILES)));
+  const freshRequests = APP_FILES.map((url) => new Request(url, { cache: "reload" }));
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(freshRequests)));
   self.skipWaiting(); // start working straight away
 });
 
@@ -48,8 +51,15 @@ self.addEventListener("fetch", (event) => {
   const isLibrary = APP_FILES.includes(request.url);
   if (!isOwnFile && !isLibrary) return;
 
+  // GitHub Pages tells browsers they may reuse a file for 10 minutes, which
+  // delayed updates. cache: "no-cache" makes the browser check with GitHub
+  // every time; if nothing changed, GitHub answers "not modified" (very quick).
+  // (A new Request is needed: page-opening requests can't be given options directly.)
+  // The two libraries never change at a given version, so they're fetched normally.
+  const networkRequest = isOwnFile ? new Request(request.url, { cache: "no-cache" }) : request;
+
   event.respondWith(
-    fetch(request)
+    fetch(networkRequest)
       .then((response) => {
         if (response.ok) {
           const copy = response.clone();

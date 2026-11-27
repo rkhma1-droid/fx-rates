@@ -4,7 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CAD Exchange Rates</title>
-  <link rel="stylesheet" href="style.css">
+  <!--
+    "?v=..." is a version tag. Whenever style.css, holidays.js or app.js change,
+    change this tag (all three places) so phones and browsers download the new
+    files instead of reusing a remembered copy.
+  -->
+  <link rel="stylesheet" href="style.css?v=2026-11-27.2">
 
   <!-- Makes the site installable as an app (Android: Chrome → Install app) -->
   <link rel="manifest" href="manifest.webmanifest">
@@ -90,7 +95,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"
     integrity="sha512-CQBWl4fJHWbryGE+Pc7UAxWMUMNMWzWxF4SQo9CgkJIN1kx6djDQZjh3Y8SZ1d+6I+1zze6Z7kHXO7q3UyZAWw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="holidays.js"></script>
-  <script src="app.js"></script>
+  <script src="holidays.js?v=2026-11-27.2"></script>
+  <script src="app.js?v=2026-11-27.2"></script>
 </body>
 </html>
