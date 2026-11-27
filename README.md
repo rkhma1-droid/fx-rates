@@ -4,7 +4,13 @@ A web page showing daily exchange rates between the Canadian dollar and the othe
 
 ## Run it
 
-Double-click `index.html` to open it in your browser. It needs an internet connection to fetch the rates.
+**Online (any device, including phones):** https://rkhma1-droid.github.io/fx-rates/
+
+**On this computer:** double-click `index.html` to open it in your browser.
+
+Either way it needs an internet connection to fetch the rates.
+
+The online version is published by GitHub Pages from the `main` branch. Pushing a new commit updates it within a minute or two.
 
 ## Features
 
