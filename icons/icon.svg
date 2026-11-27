@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- App icon: white "C$" with a small rising trend line on Canadian red.
+       Full-bleed square: Android cuts it to the phone's icon shape. -->
+  <rect width="512" height="512" fill="#c8102e"/>
+  <text x="256" y="230" text-anchor="middle" dominant-baseline="middle"
+        font-family="Segoe UI, Arial, sans-serif" font-weight="700" font-size="188" fill="#ffffff">C$</text>
+  <polyline points="141,379 210,354 267,371 371,322" fill="none" stroke="#ffffff"
+            stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

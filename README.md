@@ -12,6 +12,15 @@ Either way it needs an internet connection to fetch the rates.
 
 The online version is published by GitHub Pages from the `main` branch. Pushing a new commit updates it within a minute or two.
 
+### Install as an app (Android)
+
+1. Open the online address in **Chrome**.
+2. Tap **⋮ → Install app** (or the "Install" pop-up if it appears).
+
+It then appears in the app drawer as **CAD Rates**, opens full-screen, and updates itself. The app opens without internet (it shows its last version), but the rates always need a connection.
+
+Files that make this work: `manifest.webmanifest` (name, icon, colours), `sw.js` (service worker: saves the app files) and `icons/`.
+
 ## Features
 
 - **Default dates:** the last 30 days, ending yesterday. If yesterday was a weekend or a Canadian federal public holiday, the end date moves back to the most recent working day.
@@ -29,6 +38,7 @@ The online version is published by GitHub Pages from the `main` branch. Pushing 
 - `style.css`: how it looks
 - `app.js`: fetching rates, the table, the inverse button and downloads
 - `holidays.js`: the federal holiday calendar and the default end-date logic
+- `manifest.webmanifest`, `sw.js`, `icons/`: installable-app support
 
 ## Data source
 

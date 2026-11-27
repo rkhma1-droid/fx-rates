@@ -434,3 +434,12 @@ excelButton.addEventListener("click", downloadExcel);
 fillCurrencyList();
 setDefaultDates();
 loadRates();
+
+// Installed-app support: register the service worker (sw.js).
+// Only works on a real web address (https:// or localhost), not when opening
+// index.html by double-clicking, so failures are simply ignored.
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  });
+}
