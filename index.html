@@ -69,10 +69,21 @@
     </p>
   </main>
 
+  <!--
+    Outside libraries, each with an integrity check ("fingerprint"):
+    the browser refuses to run the file if even one byte differs from the
+    version we checked. If you change a version number, the fingerprint must
+    be updated too (cdnjs.com shows it next to each file), or the script won't load.
+  -->
+
   <!-- SheetJS: builds the .xlsx file for the Excel download -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"
+    integrity="sha512-r22gChDnGvBylk90+2e/ycr3RVrDi8DIOkIGNhJlKfuyQM4tIRAI062MaV8sfjQKYVGjOBaZBOA87z+IhZE9DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Chart.js: draws the line chart -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"
+    integrity="sha512-CQBWl4fJHWbryGE+Pc7UAxWMUMNMWzWxF4SQo9CgkJIN1kx6djDQZjh3Y8SZ1d+6I+1zze6Z7kHXO7q3UyZAWw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="holidays.js"></script>
   <script src="app.js"></script>
 </body>
